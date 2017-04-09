@@ -32,3 +32,4 @@ switch (operator) {
     throw new Error("不支持");
 }
 console.log(result);
+
