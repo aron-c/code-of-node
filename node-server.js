@@ -5,14 +5,14 @@
 const http = require('http');
 let count = 0;
 
-const server = http.createServer(function(request,response){
+const server = http.createServer(function (request, response) {
     //此回调有用户请求时触发
     response.write(`你是第${count++}个访问用户`);
-    
+
     response.end();
     //触发发送事件
 })
-server.listen(2080,(error) => {
+server.listen(2080, (error) => {
 
     if (error) {
         throw error;

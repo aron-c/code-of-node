@@ -8,3 +8,5 @@ function say(msg) {
 module.exports = {
     say
 };
+
+console.log('hahaha')

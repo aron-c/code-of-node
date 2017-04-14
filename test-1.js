@@ -48,53 +48,53 @@
 //     process.stdout.write('${msg}\n')
 // }
 
-// var msg = 'hello';
-// process.stdout.write(`${msg}\n`)
+var msg = 'hello';
+process.stdout.write(`${msg}\n`)
 
-// var size = process.stdout.getWindowSize()
+var size = process.stdout.getWindowSize()
 
-// console.log(`${size}`);
+console.log(`${size}`);
 
-// var fps = 10;
-// var index = 0;
-// var frames = [];
+var fps = 10;
+var index = 0;
+var frames = [];
 
-// frames[frames.length] = `
-// (￣▽￣)~*
-// `;
-// frames[frames.length] = `
-// \（￣︶￣）/
-// `;
-// frames[frames.length] = `
-// ╰(￣▽￣)╭
-// `;
-// frames[frames.length] = `
-// []~(￣▽￣)~*]
-// `;
-// frames[frames.length] = `
-// (～￣▽￣)～
-// `;
+frames[frames.length] = `
+(￣▽￣)~*
+`;
+frames[frames.length] = `
+\（￣︶￣）/
+`;
+frames[frames.length] = `
+╰(￣▽￣)╭
+`;
+frames[frames.length] = `
+[]~(￣▽￣)~*]
+`;
+frames[frames.length] = `
+(～￣▽￣)～
+`;
 
-// var render = () => {
+var render = () => {
 
-//     process.stdout.write('\033[0f');
-//     process.stdout.write('\033[2J');
+    process.stdout.write('\033[0f');
+    process.stdout.write('\033[2J');
 
-//     if (index === frames.length) {
-//         index = 0;}
+    if (index === frames.length) {
+        index = 0;}
 
-//     process.stdout.write(frames[index++])
-// }
+    process.stdout.write(frames[index++])
+}
 
-//  setInterval(render,1000/fps);
+ setInterval(render,1000/fps);
  
-// var a = 1;
-// setInterval(() => {
+var a = 1;
+setInterval(() => {
 
-//     console.log(a);
+    console.log(a);
 
-//     a = a+1;
-// },1000)
+    a = a+1;
+},1000)
 
 //接受用户输入
 

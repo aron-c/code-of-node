@@ -14,22 +14,22 @@ let parameter2 = args[2];
 // console.log(result);
 switch (operator) {
     case '+':
-        result = parseFloat(parameter1) + parseFloat(parameter2); 
+        result = parseFloat(parameter1) + parseFloat(parameter2);
         break;
     case '-':
-        result = parseFloat(parameter1) - parseFloat(parameter2); 
+        result = parseFloat(parameter1) - parseFloat(parameter2);
         break;
     case '×':
     case '*':
-        result = parseFloat(parameter1) * parseFloat(parameter2); 
+        result = parseFloat(parameter1) * parseFloat(parameter2);
         break;
     case '/':
     case '÷':
-        result = parseFloat(parameter1) / parseFloat(parameter2); 
+        result = parseFloat(parameter1) / parseFloat(parameter2);
         break;
 
     default:
-    throw new Error("不支持");
+        throw new Error("不支持");
 }
 console.log(result);
 
