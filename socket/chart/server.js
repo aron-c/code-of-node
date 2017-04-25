@@ -6,10 +6,11 @@ var clients = [];
 //用于存储所有的连接对象
 //创建
 var server = net.createServer((socket) => {
-    //当有客户端发起链接的时候
+    //当有客户端发起链接的时候,socket即为当前接入的客户端
     clients.push(socket);
 
     console.log(`欢迎${socket.remoteAddress}来到2080聊天室`);
+    console.log(`当前聊天室人数${clients.length}`);
 
     function boardcast(signal) {
         //肯定有用户名和消息
@@ -58,8 +59,16 @@ var server = net.createServer((socket) => {
             socket.write('发送格式出错了！')
         }
     });
-});
 
+    socket.on('error', (err) => {
+        //当摸一个socket连接断开  触发时间error
+        console.log(`${socket,remoteAddress}下线了`);
+        //删除用户数组中的该socket
+        clients.splice(clients.indexOf(socket), 1);
+
+        console.log(`当前聊天室人数${clients.length}`);
+    });
+});
 
 
 //监听特点端口

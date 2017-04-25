@@ -15,12 +15,18 @@ rl.question('请问您的用户名是（请用英文）：\n', (name) => {
     var server = net.connect(2080, () => {
         console.log("欢迎来到2080聊天室");
         //监听服务端的数据
+        var user = {
+            procotol: 'signIn',
+            username: name
+        }
+        server.write(JSON.stringify(user));
+
         server.on('data', (chunk) => {
             //监听服务端的数据
             try {
                 var signal = JSON.parse(chunk.toString().trim());
                 var procotol = signal.procotol;
-
+                console.log(signal);
                 switch (procotol) {
                     case 'boardcast':
 
@@ -28,9 +34,11 @@ rl.question('请问您的用户名是（请用英文）：\n', (name) => {
                         rl.prompt();
                         break;
 
-                        // case 'p2p':
-                        //     p2p(signal);
-                        //     break;
+                    case 'p2p':
+
+                        console.log('\np2p[' + signal.from + '] > ' + signal.message);
+                        rl.prompt();
+                        break;
                     default:
                         server.write('无法识别你的请求！')
                         break;
@@ -47,14 +55,31 @@ rl.question('请问您的用户名是（请用英文）：\n', (name) => {
         rl.on('line', (line) => {
             //line事件触发时间为 控制台敲入回车
             //{“procotol“：”boardcast“，”from“：“张三”，“message”：“说啥？”}
-            var send = {
-                procotol: 'boardcast',
-                from: name,
-                message: line.toString().trim()
-            };
 
-            server.write(JSON.stringify(send));
+            line = line.toString().trim();
+
+            var temp = line.split(':');
+            var send;
+            if (temp.length === 2) {
+                //p2p
+                send = {
+                    procotol: 'p2p',
+                    from: name,
+                    to: temp[0],
+                    message: temp[1]
+                };
+
+            } else {
+                //广播消息
+                send = {
+                    procotol: 'boardcast',
+                    from: name,
+                    message: line.toString().trim()
+                };
+
+            };
             //序列化之后通过socket发送给服务端
+            server.write(JSON.stringify(send));
 
             rl.prompt();
         }).on('close', () => {
