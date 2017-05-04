@@ -79,22 +79,23 @@ var render = () => {
 
     process.stdout.write('\033[0f');
     process.stdout.write('\033[2J');
-
+    //清除屏幕
     if (index === frames.length) {
-        index = 0;}
+        index = 0;
+    }
 
     process.stdout.write(frames[index++])
 }
 
- setInterval(render,1000/fps);
- 
+setInterval(render, 1000 / fps);
+
 var a = 1;
 setInterval(() => {
 
     console.log(a);
 
-    a = a+1;
-},1000)
+    a = a + 1;
+}, 1000)
 
 //接受用户输入
 
@@ -104,7 +105,7 @@ setInterval(() => {
 
 //     var chunk = process.stdin.read();
 //     if (chunk !== null) {
-        
+
 //         process.stdout.write(`data:${chunk}\n`);
 
 //     }

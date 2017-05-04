@@ -16,28 +16,28 @@ let parameter2 = args[2];
 //const require = require('fs')
 //引入子带模块
 const calc = require(__dirname + '/module/calculator.js')
-//绝对路径使用
+    //绝对路径使用
 
 // let result = eval(`${parameter1} ${operator} ${parameter2}`);
 // console.log(result);
 let result;
 switch (operator) {
     case '+':
-        result = calc.add(parameter1,parameter2);
+        result = calc.add(parameter1, parameter2);
         break;
     case '-':
-        result = calc.subtract(parameter1,parameter2); 
+        result = calc.subtract(parameter1, parameter2);
         break;
     case '×':
     case '*':
-        result = calc.mutiply(parameter1,parameter2); 
+        result = calc.mutiply(parameter1, parameter2);
         break;
     case '/':
     case '÷':
-        result = calc.divide(parameter1,parameter2); 
+        result = calc.divide(parameter1, parameter2);
         break;
 
     default:
-    throw new Error("不支持");
+        throw new Error("不支持");
 }
 console.log(result);
